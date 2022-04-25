@@ -1,0 +1,95 @@
+body {
+    margin: 100px auto;
+    text-align: center;
+}
+
+table{
+    text-align: left;
+}
+
+.boldHR {
+    border: 3px dotted gray;
+}
+
+.faculty {
+    margin: 40px;
+    padding: 10px;
+    border: 2px solid burlywood;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    text-align: left;
+}
+
+.faculty-alt {
+    margin: 40px;
+    padding: 10px;
+    border: 2px solid rgb(122, 70, 2);
+    border-radius: 10px;
+    background-color: rgb(41, 25, 2);
+    text-align: left;
+}
+
+.facultyName {
+    background-color: rgb(59, 35, 3);
+    color: white;
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.facultyName-alt {
+    background-color: rgb(187, 107, 3);
+    color: rgb(36, 6, 6);
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.exp {
+    background-color: rgb(109, 72, 3);
+    color: rgb(233, 161, 78);
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+}
+.exp-alt {
+    background-color: rgb(233, 161, 78);
+    color: rgb(109, 72, 3);
+    padding: 3px 8px;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.dock {
+    display: flex;
+    /* justify-content: space-between; */ 
+    width: 100%;
+    padding: 3px 8px;
+}
+.dock-alt {
+    display: flex;
+    /* justify-content: space-between; */
+    padding: 3px 8px;
+    color: burlywood;
+}
+
+.card{
+    width: 32%;
+    display: inline-block;
+    text-align: center;
+    background-color: wheat;
+    margin: 2px;
+    border-radius: 5px;
+    color: brown;
+    padding: 4px;
+}
+
+.btn-dark{
+    width: 200px;
+}
+
+.bigText{
+    font-size: 3rem;
+    font-style: bold;
+
+}
