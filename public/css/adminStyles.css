@@ -1,0 +1,16 @@
+body {
+    margin: 100px auto;
+    text-align: center;
+}
+
+hr {
+    height: 2px;
+}
+
+.boldHR {
+    border: 3px dotted gray;
+}
+
+.btn {
+    margin: 10px;
+}

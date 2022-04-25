@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h1>Welcome <%=user%></h1>
+    <h3>Fill your Preferences before 9 may 2022.</h3>
+    <form action="/faculty/index" method="post">
+        <!-- <input type="text" value="NAN" name="name"> -->
+      <%for(let i=1; i<=4; i++){%>
+      <fieldset>
+        <legend>Preference <%=i%></legend>
+        <select name="<%=i%>">
+          <%for(let x of courses){%>
+          <option value="<%=x%>"><%=x%></option>
+          <%}%>
+        </select>
+      </fieldset>
+      <br>
+      <%}%>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
