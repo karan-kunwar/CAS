@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Hi <%=user%>, here is what we received, </h2>
+    <%for(let i=1; i<=4; i++){%>
+        <fieldset>
+            <h4><%=i%>) <%=courses[i]%></h4>
+        </fieldset>
+    <%}%>
+    <form action="/faculty/index" method="get">
+        <button>Reset</button>
+    </form>
+  </body>
+</html>
