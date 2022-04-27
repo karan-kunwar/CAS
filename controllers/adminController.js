@@ -82,7 +82,7 @@ bs10.sem as "Sem10" from preferences as pf inner join faculty as fc on fc.facult
     let a = 4,
       b = 1,
       c = 3;
-      
+
     res.render("../views/adminDashboard.ejs", {
       fobj,
       a,
