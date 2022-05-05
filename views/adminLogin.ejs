@@ -3,84 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Admin Login</title>
-
-    <!-- Font Icon -->
-    <link
-      rel="stylesheet"
-      href="/static/fonts/material-icon/css/material-design-iconic-font.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/static/vendor/nouislider/nouislider.min.css"
-    />
-    <link rel="icon" href="/static/images/apartment.png"">
-
+    <title>Faculty Login</title>
     <!-- Main css -->
     <link rel="stylesheet" href="/static/css/loginStyle.css" />
   </head>
   <body>
-    <div class="main">
-      <div class="container">
-        <div class="signup-content">
-          <div class="signup-img">
-            <a href="/">
-              <img
-                src="/static/images/logo.png";
-                class="image-login"
-                alt="Login"
-              />
-            </a>
-            <div class="signup-img-content">
-              <!-- <p>Login page of admin</p> -->
-            </div>
-          </div>
-          <div class="signup-form">
-            <form method="POST" class="register-form" id="register-form">
-              <h2>Admin Login</h2>
-              <br />
-              <br />
-              <div class="form-row">
-                <div class="form-group">
-                  <div class="form-input">
-                    <label for="email_id" class="required">Email Id</label>
-                    <input type="text" id="email_id" name="email_id" required />
-                  </div>
-                  <br>
-                  <div class="form-input">
-                    <label for="password" class="required">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <br>
-              <div class="form-submit">
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="submit"
-                  id="submit"
-                  name="submit"
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form method="POST">
+        <img src="/static/images/logo.png" alt="" class="logo">
+        <h3>Admin Login</h3>
+        <label for="email_id">Email Id</label>
+        <input type="text" id="email_id" name="email_id" placeholder="Institute Email" required />
 
-    <!-- JS -->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/nouislider/nouislider.min.js"></script>
-    <script src="/static/vendor/wnumb/wNumb.js"></script>
-    <script src="/static/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="/static/vendor/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="/static/js/main.js"></script>
+        <label for="password" class="required">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+
+        <button class="button">Log In</button>
+    </form>
   </body>
 </html>

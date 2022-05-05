@@ -29,7 +29,6 @@ body {
     width: 32%;
     display: inline-block;
     /* text-align: center; */
-    background-color: wheat;
     margin: 2px;
     border-radius: 5px;
     color: brown;
@@ -37,6 +36,9 @@ body {
     padding-right: 8px;
     padding-bottom: 8px;
     margin-bottom: 10px;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 7px 16px 0 rgba(0, 0, 0, 0.3);
 }
 
 .card select{

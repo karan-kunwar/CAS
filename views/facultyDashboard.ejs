@@ -11,7 +11,7 @@
     <h2>Hi <%=user%>, here is what we received, </h2>
     <%for(let i=0; i<courses.length; i++){%>
         <div class="card">
-            <h3><%=i+1%>. <%=courses[i]['Course']%></h3>
+            <h3><%=i+1%>. <%=courses[i]['coursename']%></h3>
         </div>
     <%}%>
     <form action="/faculty/index" method="get">
