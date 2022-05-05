@@ -5,6 +5,7 @@ const {
     adminIndexGet,
     adminIndexPost,
     adminDashboardGet,
+    adminDashboardPost,
     adminLoginGet,
     adminLoginPost,
 } = require("../controllers/adminController");
@@ -14,5 +15,6 @@ adminRouter.post("/index", adminIndexPost);
 adminRouter.get("/login", adminLoginGet);
 adminRouter.post("/login", adminLoginPost);
 adminRouter.get("/dashboard", adminDashboardGet);
+adminRouter.post("/dashboard", adminDashboardPost);
 
 module.exports = adminRouter;
