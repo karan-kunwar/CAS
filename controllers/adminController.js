@@ -16,28 +16,28 @@ let adminLoginPost = (req, res) => {
   let email_id = req.body.email_id;
   let password = req.body.password;
   console.log(email_id, password); //
-  res.redirect("login"); // To be removed
-  if (!(email_id && password)) return res.redirect("/admin/login");
-  let query = `SELECT * FROM adminTable WHERE adminemail_id = ${email_id};`;
-  client.query(query, function (err, result, fields) {
-    if (err) {
-      console.log(err);
-      return res.redirect("/admin/login");
-    }
-    if (result.length == 0) {
-      return res.redirect("/admin/login");
-    }
-    bcrypt.compare(password, result[0].adminPassword).then((resu) => {
-      if (resu) {
-        req.session.loggedIn = true;
-        req.session.userType = "admin";
-        req.session.user = result[0];
-        res.redirect("/admin/dashboard");
-      } else {
-        res.redirect("/admin/login");
-      }
-    });
-  });
+  res.redirect("index"); // To be removed
+//   if (!(email_id && password)) return res.redirect("/admin/login");
+//   let query = `SELECT * FROM adminTable WHERE adminemail_id = ${email_id};`;
+//   client.query(query, function (err, result, fields) {
+//     if (err) {
+//       console.log(err);
+//       return res.redirect("/admin/login");
+//     }
+//     if (result.length == 0) {
+//       return res.redirect("/admin/login");
+//     }
+//     bcrypt.compare(password, result[0].adminPassword).then((resu) => {
+//       if (resu) {
+//         req.session.loggedIn = true;
+//         req.session.userType = "admin";
+//         req.session.user = result[0];
+//         res.redirect("/admin/dashboard");
+//       } else {
+//         res.redirect("/admin/login");
+//       }
+//     });
+//   });
 };
 //--------------------- End of admin Login  ---------------------//
 

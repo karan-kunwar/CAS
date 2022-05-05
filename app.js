@@ -40,6 +40,7 @@ app.use("/faculty", facultyRouter);
 app.get("*", (req, res)=>{
     res.render("error");
 });
+
 app.listen(3000, () => {
   console.log(`Course Allocation App listening at http://localhost:3000`);
 });
