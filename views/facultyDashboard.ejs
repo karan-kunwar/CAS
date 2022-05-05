@@ -4,18 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/facultyDashboard.css" />
     <title>Document</title>
   </head>
   <body>
-    <h2>Hi <%=user%>, here is what we received, </h2>
+    <h2>Hi <%=user%><h2>
+    <h3>Here is what we received, </h3>
     <%for(let i=0; i<courses.length; i++){%>
         <div class="card">
             <h3><%=i+1%>. <%=courses[i]['coursename']%></h3>
         </div>
     <%}%>
     <form action="/faculty/index" method="get">
-        <button class="btn-dark bigText">Reset</button>
+        <button class="button">Reset</button>
     </form>
+    <a class="logout" href="/logout"><span><i class="fa fa-sign-out fa-2x"></i></span></a>
   </body>
 </html>
