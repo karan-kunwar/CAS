@@ -1,0 +1,66 @@
+body {
+    margin: 100px auto;
+    text-align: center;
+    background-image: url("/static/images/back1.webp");
+}
+
+.faculty {
+    margin: 40px;
+    padding: 10px;
+    border: 2px solid burlywood;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    text-align: left;
+}
+
+.dock {
+    display: flex;
+    width: 100%;
+    padding: 3px 8px;
+}
+
+.dock-alt {
+    display: flex;
+    padding: 3px 8px;
+    color: burlywood;
+}
+
+.card{
+    width: 32%;
+    display: inline-block;
+    /* text-align: center; */
+    background-color: wheat;
+    margin: 2px;
+    border-radius: 5px;
+    color: brown;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.card select{
+    color:brown;
+    background-color: rgb(216, 182, 119);
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.card h3{
+    display: inline;
+}
+.btn-dark{
+    width: 200px;
+    color:rgb(233, 161, 78);
+    background-color: brown;
+    padding: 5px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.bigText{
+    font-size: 3rem;
+    font-style: bold;
+}
