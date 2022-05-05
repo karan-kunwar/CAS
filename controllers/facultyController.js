@@ -26,29 +26,29 @@ let facultyLoginPost = async (req, res) => {
   //       client.end();
   //     }
   //   );
-  res.redirect("facultyIndex"); // To be removed
+  res.redirect("index"); // To be removed
 
-  if (!(email_id && password)) return res.redirect("/faculty/login");
-  let query = `SELECT * FROM facultyTable WHERE facultyemail_id = ${email_id};`;
-  client.query(query, function (err, result, fields) {
-    if (err) {
-      console.log(err);
-      return res.redirect("/faculty/login");
-    }
-    if (result.length == 0) {
-      return res.redirect("/faculty/login");
-    }
-    bcrypt.compare(password, result[0].facultyPassword).then((resu) => {
-      if (resu) {
-        req.session.loggedIn = true;
-        req.session.userType = "faculty";
-        req.session.user = result[0];
-        res.redirect("/faculty/dashboard");
-      } else {
-        res.redirect("/faculty/login");
-      }
-    });
-  });
+  //   if (!(email_id && password)) return res.redirect("/faculty/login");
+  //   let query = `SELECT * FROM facultyTable WHERE facultyemail_id = ${email_id};`;
+  //   client.query(query, function (err, result, fields) {
+  //     if (err) {
+  //       console.log(err);
+  //       return res.redirect("/faculty/login");
+  //     }
+  //     if (result.length == 0) {
+  //       return res.redirect("/faculty/login");
+  //     }
+  //     bcrypt.compare(password, result[0].facultyPassword).then((resu) => {
+  //       if (resu) {
+  //         req.session.loggedIn = true;
+  //         req.session.userType = "faculty";
+  //         req.session.user = result[0];
+  //         res.redirect("/faculty/dashboard");
+  //       } else {
+  //         res.redirect("/faculty/login");
+  //       }
+  //     });
+  //   });
 };
 
 let facultyIndexGet = (req, res) => {
@@ -77,12 +77,12 @@ let tempdata = [];
 
 let facultyIndexPost = (req, res) => {
   let preference = [];
-  for(let x in req.body){
+  for (let x in req.body) {
     let obj = JSON.parse(req.body[x]);
     preference.push(obj);
   }
   tempdata = preference;
-  console.log(tempdata)
+  console.log(tempdata);
   res.redirect("dashboard");
 };
 
