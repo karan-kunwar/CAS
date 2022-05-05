@@ -100,6 +100,7 @@ let adminIndexPost = (req, res) => {
   } else {
     res.redirect('login');
   }
+
 };
 
 // Export Excel Data to MySQL database
@@ -123,6 +124,11 @@ function exportExcelData2MySQL(filePath) {
   // );
 }
 //------------------ End of admin Index (Post) ------------------//
+
+let adminDashboardPost = (req, res) => {
+  console.log(req.body);
+
+}
 
 //------------------ Start of admin Dashboard (get) ------------------//
 let adminDashboardGet = (req, res) => {
@@ -175,9 +181,12 @@ bs10.sem as "Sem10" from preferences as pf inner join faculty as fc on fc.facult
 
 //---------------- End of admin Dashboard (get) ----------------//
 
+
+
 module.exports = {
   adminIndexGet,
   adminDashboardGet,
+  adminDashboardPost,
   adminIndexPost,
   adminLoginGet,
   adminLoginPost,
