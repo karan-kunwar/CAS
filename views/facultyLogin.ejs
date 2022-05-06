@@ -3,90 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Faculty Login</title>
-
-    <!-- Font Icon -->
-    <link
-      rel="stylesheet"
-      href="/static/fonts/material-icon/css/material-design-iconic-font.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/static/vendor/nouislider/nouislider.min.css"
-    />
-    <link rel="icon" href="/static/images/apartment.png"">
-
     <!-- Main css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/loginStyle.css" />
   </head>
   <body>
-    <div class="main">
-      <div class="container">
-        <div class="signup-content">
-          <div class="signup-img">
-            <a href="/">
-              <img
-                src="/static/images/logo.png"
-                class="image-login"
-                alt="faculty Login"
-              />
-            </a>
-            <div class="signup-img-content">
-              <!-- <p>Login page of faculty</p> -->
-            </div>
-          </div>
-          <div class="signup-form">
-            <form method="POST" class="register-form" id="register-form">
-              <h1>Faculty Login</h1>
-              <br /><br />
-              <div class="form-row">
-                <div class="form-group">
-                  <div class="form-input">
-                    <label for="email_id" class="required">Email Id</label>
-                    <input type="text" id="email_id" name="email_id" required />
-                  </div>
-                  <br />
-                  <div class="form-input">
-                    <label for="password" class="required">Password</label>
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-              <br />
-              <div class="form-submit">
-                <input
-                  type="submit"
-                  value="Submit"
-                  class="submit"
-                  id="submit"
-                  name="submit"
-                />
-                <!-- <input
-                  type="submit"
-                  value="Reset"
-                  class="submit"
-                  id="reset"
-                  name="reset"
-                /> -->
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <form method="POST">
+      <img src="/static/images/logo.png" alt="" class="logo" />
+      <h3>Faculty Login</h3>
+      <label for="email_id">Email Id</label>
+      <input
+        type="text"
+        id="email_id"
+        name="email_id"
+        placeholder="Institute Email"
+        required
+      />
 
-    <!-- JS -->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/nouislider/nouislider.min.js"></script>
-    <script src="/static/vendor/wnumb/wNumb.js"></script>
-    <script src="/static/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="/static/vendor/jquery-validation/dist/additional-methods.min.js"></script>
-    <script src="/static/js/main.js"></script>
+      <label for="password" class="required">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+
+      <button class="button">Log In</button>
+    </form>
+    <a class="home" href="/"><i class="fa fa-home fa-3x"></i></a>
   </body>
 </html>

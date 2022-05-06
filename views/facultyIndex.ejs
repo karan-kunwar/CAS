@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/facultyIndex.css" />
     <title>Faculty Index</title>
   </head>
   <body>
     <h1>Welcome <%=user%></h1>
-    <h3>Fill your Preferences before 9 may 2022.</h3>
+    <h3>Fill your Preferences here.</h3>
     <form action="/faculty/index" method="post">
       <!-- <input type="text" value="NAN" name="name"> -->
       <%for(let i=1; i<=6; i++){%>
@@ -23,7 +24,12 @@
       </div>
       <br />
       <%}%>
-      <button type="submit" class="btn-dark big">Submit</button>
+      <div class = "row">
+        <button type="submit" class="button col"><span>Submit</span></button>
+        <a class="button col" href="/faculty/dashboard"><span>Goto Dashboard</span></a>
+      </div>
     </form>
+    <a class="logout" href="/logout"><span><i class="fa fa-sign-out fa-2x"></i></span></a>
+    <h4 class="logout">Logout</h4>
   </body>
 </html>
