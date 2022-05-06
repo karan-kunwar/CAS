@@ -14,6 +14,14 @@ span{
 table{
     text-align: left;
 }
+label{
+    margin-bottom: 0rem;
+}
+
+td
+{
+    align-items: baseline;
+}
 
 .boldHR {
     border: 3px dotted gray;

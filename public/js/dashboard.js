@@ -18,50 +18,6 @@ for (let i = 0; i < f.length; i++) {
     console.log(f[i].classList);
 }
 
-// get a, b, c
-let a = 2,
-    b = 1,
-    c = 3;
-
-// fill up all the divs
-let tempData = {
-    'pref1': {
-        'name': "ENB",
-        'L': 2,
-        'T': 1,
-        'P': 1
-    },
-    'pref2': {
-        'name': "ADA",
-        'L': 2,
-        'T': 0,
-        'P': 2
-    },
-    'pref3': {
-        'name': "CAS",
-        'L': 2,
-        'T': 0,
-        'P': 2
-    },
-    'pref4': {
-        'name': "PGM",
-        'L': 2,
-        'T': 1,
-        'P': 0
-    },
-    'pref5': {
-        'name': "DSS",
-        'L': 0,
-        'T': 2,
-        'P': 2
-    },
-    'pref6': {
-        'name': "COP",
-        'L': 4,
-        'T': 0,
-        'P': 0
-    },
-};
 
 // fill up
 let cards = document.querySelectorAll(".preferences");
@@ -81,8 +37,23 @@ function setComment(id, totalLoad) {
     }
 }
 
-for (let i = 0; i < cards.length; i++) {
+function calcPrevLoad(card) {
     let totalLoad = 0;
+    for (let pref = 0; pref < 4; pref++) {
+        let idd = "f" + (card + 1) + "_pref" + (pref + 1);
+        let load = parseInt(document.getElementById(idd + "load").textContent);
+        let checkbox = document.getElementById(idd + "cb");
+        let checked = checkbox.checked;
+        if (checked)
+            totalLoad += load;
+    }
+    let totalID = "f" + (card + 1) + "_totalLoad";
+    document.getElementById(totalID).textContent = totalLoad.toString();
+    return totalLoad;
+}
+
+for (let i = 0; i < cards.length; i++) {
+    let totalLoad = calcPrevLoad(i);
     setComment("f" + (i + 1) + "_comment", totalLoad);
     for (let j = 0; j < 4; j++) {
         let idn = j + 1;
@@ -96,7 +67,6 @@ for (let i = 0; i < cards.length; i++) {
         let load = parseInt(document.getElementById(loadID).textContent);
 
         let checkbox = document.getElementById(idd + "cb");
-        // console.log(checkbox);
         let checked = checkbox.checked;
 
         checkbox.addEventListener("click", (event) => {

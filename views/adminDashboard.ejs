@@ -32,31 +32,39 @@
             </div>
 
             <div class="dock">
-                <div class="card preferences" style="width: 50%; text-align: left;">
+                <div class="card preferences" style="width: 55%; text-align: left;">
                     <h5 style="text-align: center;">Preferences</h5>
                     <table style="width: 100%;">
                         <tr>
-                            <td id="f<%=i+1%>_pref1"><%=fobj[i]['Course1']%> - <%=fobj[i]['Branch1']%> - Semester
-                                <%=fobj[i]['Sem1']%></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref1cb" id="f<%=i+1%>_pref1cb"></td>
+                            <td id="f<%=i+1%>_pref1"><label for="f<%=i+1%>_pref1cb"><%=fobj[i]['Course1']%> -
+                                    <%=fobj[i]['Branch1']%> - Semester
+                                    <%=fobj[i]['Sem1']%></label></td>
+                            <td> <input type="checkbox" name="f<%=i+1%>_pref1cb" id="f<%=i+1%>_pref1cb"
+                                    <% if(checkedPrefs[i+1][1]==1){ %> checked <% } %>></td>
                             <td id="f<%=i+1%>_pref1load"><%=fobj[i]['L1']*a + fobj[i]['T1']*b + fobj[i]['P1']*c%></td>
                         </tr>
                         <tr>
-                            <td id="f<%=i+1%>_pref2"><%=fobj[i]['Course2']%> - <%=fobj[i]['Branch2']%> - Semester
-                                <%=fobj[i]['Sem2']%></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref2cb" id="f<%=i+1%>_pref2cb"></td>
+                            <td id="f<%=i+1%>_pref2"><label for="f<%=i+1%>_pref2cb"><%=fobj[i]['Course2']%> -
+                                    <%=fobj[i]['Branch2']%> - Semester
+                                    <%=fobj[i]['Sem2']%></label></td>
+                            <td> <input type="checkbox" name="f<%=i+1%>_pref2cb" id="f<%=i+1%>_pref2cb"
+                                    <% if(checkedPrefs[i+1][2]==1){ %> checked <% } %>></td>
                             <td id="f<%=i+1%>_pref2load"><%=fobj[i]['L2']*a + fobj[i]['T2']*b + fobj[i]['P2']*c%></td>
                         </tr>
                         <tr>
-                            <td id="f<%=i+1%>_pref3"><%=fobj[i]['Course3']%> - <%=fobj[i]['Branch3']%> - Semester
-                                <%=fobj[i]['Sem3']%></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref3cb" id="f<%=i+1%>_pref3cb"></td>
+                            <td id="f<%=i+1%>_pref3"><label for="f<%=i+1%>_pref3cb"><%=fobj[i]['Course3']%> -
+                                    <%=fobj[i]['Branch3']%> - Semester
+                                    <%=fobj[i]['Sem3']%></label></td>
+                            <td> <input type="checkbox" name="f<%=i+1%>_pref3cb" id="f<%=i+1%>_pref3cb"
+                                    <% if(checkedPrefs[i+1][3]==1){ %> checked <% } %>></td>
                             <td id="f<%=i+1%>_pref3load"><%=fobj[i]['L3']*a + fobj[i]['T3']*b + fobj[i]['P3']*c%></td>
                         </tr>
                         <tr>
-                            <td id="f<%=i+1%>_pref4"><%=fobj[i]['Course4']%> - <%=fobj[i]['Branch4']%> - Semester
-                                <%=fobj[i]['Sem4']%></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref4cb" id="f<%=i+1%>_pref4cb"></td>
+                            <td id="f<%=i+1%>_pref4"><label for="f<%=i+1%>_pref4cb"><%=fobj[i]['Course4']%> -
+                                    <%=fobj[i]['Branch4']%> - Semester
+                                    <%=fobj[i]['Sem4']%></label></td>
+                            <td> <input type="checkbox" name="f<%=i+1%>_pref4cb" id="f<%=i+1%>_pref4cb"
+                                    <% if(checkedPrefs[i+1][4]==1){ %> checked <% } %>></td>
                             <td id="f<%=i+1%>_pref4load"><%=fobj[i]['L4']*a + fobj[i]['T4']*b + fobj[i]['P4']*c%></td>
                         </tr>
                         <!-- <tr>
@@ -111,7 +119,7 @@
                         <li>ADA</li>
                         <li>PGM</li>
                     </ul>
-                    <h6>Total Load : 4</h6>
+                    <h6>Total Load : 24</h6>
                 </div>
             </div>
 

@@ -63,3 +63,9 @@ left join branch as b10 on b10.branchid = bs10.branchid
 left join course as c10 on c10.courseid = sc10.courseid
 
 where fc.facultyid = 1;
+
+
+
+// allocate
+insert into faculty_course_current (facultyid, semcourseid)
+values (1, 2), (3, 4), (blah, blah);
