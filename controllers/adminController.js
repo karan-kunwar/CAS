@@ -303,11 +303,59 @@ let adminDashboardGet = (req, res) => {
 
 //---------------- End of admin Dashboard (get) ----------------//
 
-let manageCoursesPost = (req, res) => {
+async function getPreviousLimits() {
+  let pq = `select * from semcourselimit`;
+  let pres = await client.query(pq);
+
+  let initialList = new Array(500).fill(0);
+
+  for (let i = 0; i < pres['rows'].length; i++) {
+    initialList[pres['rows'][i]['semcourseid']] = pres['rows'][i]['maxfaculty'];
+  }
+  return initialList;
+}
+
+let manageCoursesPost = async (req, res) => {
+  let getInitialList = await getPreviousLimits();
+  let newList = new Array(500).fill(0);
+  let change = [];
+
+  for (let i = 0; i < 500; i++) {
+    let id = 'maxFaculty_' + i;
+    if (req.body.hasOwnProperty(id)) {
+      if (req.body[id] != getInitialList[i]) {
+        change.push({
+          'id': i,
+          'lim': req.body[id]
+        });
+      }
+    }
+  }
+
+  for (let i = 0; i < change.length; i++) {
+    let id = change[i]['id'];
+    let lim = change[i]['lim'];
+
+    let upQ = `update semcourselimit set maxfaculty=${lim} where semcourseid = ${id}`;
+    try {
+      let upres = await client.query(upQ);
+    } catch (uperr) {
+      throw uperr;
+    }
+  }
+  console.log("changed");
+  res.redirect('manageCourses');
 };
 
-let manageCoursesGet = (req, res) => {
-  res.render('manageCourses');
+let manageCoursesGet = async (req, res) => {
+
+  let maxFacultyQ = `select scl.semcourseid as "SemCourseId", scl.maxfaculty as "MaxFaculty", c.coursename as "Course" from semcourselimit as scl inner join sem_course as sc using (semcourseid) inner join course as c using (courseid)`;
+  let maxFacRes = await client.query(maxFacultyQ);
+
+  let ob = (maxFacRes["rows"]);
+  res.render('manageCourses', {
+    ob
+  });
 };
 
 

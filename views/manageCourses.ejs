@@ -5,49 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/admin/manageCourses.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/manageCourses.css">
     <title>Document</title>
 </head>
 
 <body>
-    <h2>IT - Semester X</h2>
+    <h2>Manage Courses</h2>
     <hr class="boldHR">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Select Course
-                  </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-    </div>
-
-    <p style="display: inline-block;">Select number of faculties</p>
-    <textarea name="faculties" id="" cols="3" rows="1"></textarea>
-
-    <hr>
-
-    <table>
-        <tr>
-            <th>Course</th>
-            <th>Code</th>
-            <th>Number of faculties</th>
-            <th>
-                <!-- <input type="radio "> -->
-                Delete
-                <!-- <input type="checkbox" id="html" name="fav_language" value="Delete">
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Course Name</th>
+                <th>Number of faculties</th>
+                <th>
+                    <!-- <input type="radio "> -->
+                    Delete
+                    <!-- <input type="checkbox" id="html" name="fav_language" value="Delete">
                 <label for="html">HTML</label><br> -->
-            </th>
-        </tr>
-    </table>
+                </th>
+            </tr>
+            <% for(let i=0; i< ob.length; i++) { %>
+            <tr>
+                <td><%=i+1%></td>
+                <td><%=ob[i]['Course']%></td>
+                <td><input type="number" name="maxFaculty_<%=ob[i]['SemCourseId']%>"
+                        id="maxFaculty_<%=ob[i]['SemCourseId']%>" value="<%=ob[i]['MaxFaculty']%>"></td>
+                <td><input type="checkbox" name="maxFaculty_<%=ob[i]['SemCourseId']%>_del"
+                        id="maxFaculty_<%=ob[i]['SemCourseId']%>_del"></td>
+            </tr>
+            <% } %>
+        </table>
+        <br>
+        <input type="submit" value="save">
+    </form>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin="anonymous "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js " integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin="anonymous "></script>
+    <script src=" https://code.jquery.com/jquery-3.2.1.slim.min.js "
+        integrity=" sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN " crossorigin=" anonymous ">
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js "
+        integrity=" sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q " crossorigin=" anonymous ">
+    </script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js "
+        integrity=" sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl " crossorigin=" anonymous ">
+    </script>
 </body>
-
-</html>
 
 </html>
