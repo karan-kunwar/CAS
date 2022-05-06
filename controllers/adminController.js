@@ -307,7 +307,7 @@ let manageCoursesPost = (req, res) => {
 };
 
 let manageCoursesGet = (req, res) => {
-  res.redirect('manageCourses');
+  res.render('manageCourses');
 };
 
 

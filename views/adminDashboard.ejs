@@ -1,73 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/adminDashboard.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/css/adminDashboard.css" />
     <title>Course Allocation</title>
-</head>
+  </head>
 
-<body>
-
-    <h3>Welcome to Course Allocation</h3>
+  <body>
+    <h2>Welcome to Course Allocation</h2>
 
     <form action="" method="post">
+      <% for(let i=0; i< fobj.length; i++) {%>
+      <div class="faculty frame" id="faculty_<%=i+1%>">
+        <div class="facultyName" id="facultyName_<%=i+1%>">
+          <h5><%= i+1 %>. <%=fobj[i]['name']%></h5>
+        </div>
 
-        <% for(let i=0; i< fobj.length; i++) {%>
-        <div class="faculty frame" id="faculty_<%=i+1%>">
-            <div class="facultyName" id="facultyName_<%=i+1%>">
-                <h5> <%= i+1 %>. <%=fobj[i]['name']%></h5>
-            </div>
+        <div class="exp">
+          <h6>Previous Experience</h6>
+          <ul>
+            <li>2016 odd - ENB</li>
+            <li>2017 even - ENB</li>
+          </ul>
+        </div>
 
-            <div class="exp">
-                <h6>Previous Experience</h6>
-                <ul>
-                    <li>2016 odd - ENB</li>
-                    <li>2017 even - ENB</li>
-                </ul>
-            </div>
-
-            <div class="dock">
-                <div class="card preferences" style="width: 55%; text-align: left;">
-                    <h5 style="text-align: center;">Preferences</h5>
-                    <table style="width: 100%;">
-                        <tr>
-                            <td id="f<%=i+1%>_pref1"><label for="f<%=i+1%>_pref1cb"><%=fobj[i]['Course1']%> -
-                                    <%=fobj[i]['Branch1']%> - Semester
-                                    <%=fobj[i]['Sem1']%></label></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref1cb" id="f<%=i+1%>_pref1cb"
-                                    <% if(checkedPrefs[i+1][1]==1){ %> checked <% } %>></td>
-                            <td id="f<%=i+1%>_pref1load"><%=fobj[i]['L1']*a + fobj[i]['T1']*b + fobj[i]['P1']*c%></td>
-                        </tr>
-                        <tr>
-                            <td id="f<%=i+1%>_pref2"><label for="f<%=i+1%>_pref2cb"><%=fobj[i]['Course2']%> -
-                                    <%=fobj[i]['Branch2']%> - Semester
-                                    <%=fobj[i]['Sem2']%></label></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref2cb" id="f<%=i+1%>_pref2cb"
-                                    <% if(checkedPrefs[i+1][2]==1){ %> checked <% } %>></td>
-                            <td id="f<%=i+1%>_pref2load"><%=fobj[i]['L2']*a + fobj[i]['T2']*b + fobj[i]['P2']*c%></td>
-                        </tr>
-                        <tr>
-                            <td id="f<%=i+1%>_pref3"><label for="f<%=i+1%>_pref3cb"><%=fobj[i]['Course3']%> -
-                                    <%=fobj[i]['Branch3']%> - Semester
-                                    <%=fobj[i]['Sem3']%></label></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref3cb" id="f<%=i+1%>_pref3cb"
-                                    <% if(checkedPrefs[i+1][3]==1){ %> checked <% } %>></td>
-                            <td id="f<%=i+1%>_pref3load"><%=fobj[i]['L3']*a + fobj[i]['T3']*b + fobj[i]['P3']*c%></td>
-                        </tr>
-                        <tr>
-                            <td id="f<%=i+1%>_pref4"><label for="f<%=i+1%>_pref4cb"><%=fobj[i]['Course4']%> -
-                                    <%=fobj[i]['Branch4']%> - Semester
-                                    <%=fobj[i]['Sem4']%></label></td>
-                            <td> <input type="checkbox" name="f<%=i+1%>_pref4cb" id="f<%=i+1%>_pref4cb"
-                                    <% if(checkedPrefs[i+1][4]==1){ %> checked <% } %>></td>
-                            <td id="f<%=i+1%>_pref4load"><%=fobj[i]['L4']*a + fobj[i]['T4']*b + fobj[i]['P4']*c%></td>
-                        </tr>
-                        <!-- <tr>
+        <div class="dock">
+          <div class="card preferences" style="width: 55%; text-align: left">
+            <h5 style="text-align: center">Preferences</h5>
+            <table style="width: 100%">
+              <tr>
+                <td id="f<%=i+1%>_pref1">
+                  <label for="f<%=i+1%>_pref1cb"
+                    ><%=fobj[i]['Course1']%> - <%=fobj[i]['Branch1']%> -
+                    Semester <%=fobj[i]['Sem1']%></label
+                  >
+                </td>
+                <td>
+                  <input type="checkbox" name="f<%=i+1%>_pref1cb"
+                  id="f<%=i+1%>_pref1cb" <% if(checkedPrefs[i+1][1]==1){ %>
+                  checked <% } %>>
+                </td>
+                <td id="f<%=i+1%>_pref1load">
+                  <%=fobj[i]['L1']*a + fobj[i]['T1']*b + fobj[i]['P1']*c%>
+                </td>
+              </tr>
+              <tr>
+                <td id="f<%=i+1%>_pref2">
+                  <label for="f<%=i+1%>_pref2cb"
+                    ><%=fobj[i]['Course2']%> - <%=fobj[i]['Branch2']%> -
+                    Semester <%=fobj[i]['Sem2']%></label
+                  >
+                </td>
+                <td>
+                  <input type="checkbox" name="f<%=i+1%>_pref2cb"
+                  id="f<%=i+1%>_pref2cb" <% if(checkedPrefs[i+1][2]==1){ %>
+                  checked <% } %>>
+                </td>
+                <td id="f<%=i+1%>_pref2load">
+                  <%=fobj[i]['L2']*a + fobj[i]['T2']*b + fobj[i]['P2']*c%>
+                </td>
+              </tr>
+              <tr>
+                <td id="f<%=i+1%>_pref3">
+                  <label for="f<%=i+1%>_pref3cb"
+                    ><%=fobj[i]['Course3']%> - <%=fobj[i]['Branch3']%> -
+                    Semester <%=fobj[i]['Sem3']%></label
+                  >
+                </td>
+                <td>
+                  <input type="checkbox" name="f<%=i+1%>_pref3cb"
+                  id="f<%=i+1%>_pref3cb" <% if(checkedPrefs[i+1][3]==1){ %>
+                  checked <% } %>>
+                </td>
+                <td id="f<%=i+1%>_pref3load">
+                  <%=fobj[i]['L3']*a + fobj[i]['T3']*b + fobj[i]['P3']*c%>
+                </td>
+              </tr>
+              <tr>
+                <td id="f<%=i+1%>_pref4">
+                  <label for="f<%=i+1%>_pref4cb"
+                    ><%=fobj[i]['Course4']%> - <%=fobj[i]['Branch4']%> -
+                    Semester <%=fobj[i]['Sem4']%></label
+                  >
+                </td>
+                <td>
+                  <input type="checkbox" name="f<%=i+1%>_pref4cb"
+                  id="f<%=i+1%>_pref4cb" <% if(checkedPrefs[i+1][4]==1){ %>
+                  checked <% } %>>
+                </td>
+                <td id="f<%=i+1%>_pref4load">
+                  <%=fobj[i]['L4']*a + fobj[i]['T4']*b + fobj[i]['P4']*c%>
+                </td>
+              </tr>
+              <!-- <tr>
                         <td id="f<%=i+1%>_pref5">ENB - branch - sem</td>
                         <td> <input type="checkbox" name="ENB" id="f<%=i+1%>_pref5cb"></td>
                         <td id="f<%=i+1%>_pref5load">Load</td>
@@ -77,8 +114,8 @@
                         <td> <input type="checkbox" name="ENB" id="f<%=i+1%>_pref6cb"></td>
                         <td id="f<%=i+1%>_pref6load">Load</td>
                     </tr> -->
-                    </table>
-                    <!-- <form style="width: 100%; align-content: flex-start;" action="" method="post" id="f<%=i+1%>_form">
+            </table>
+            <!-- <form style="width: 100%; align-content: flex-start;" action="" method="post" id="f<%=i+1%>_form">
                     <input type="checkbox" name="f<%=i+1%>_p1cb" id="f<%=i+1%>_pref1cb">
                     <label for="f<%=i+1%>_pref1cb"><%=fobj[i]['Course1']%> - <%=fobj[i]['Branch1']%> - Semester
                         <%=fobj[i]['Sem1']%></label>
@@ -105,40 +142,45 @@
 
                     <input type="submit" value="submit">
                 </form> -->
-                </div>
-                <div class="card">
-                    <h5>Total Load</h5>
-                    <h3 class="bigText totalLoad" id="f<%=i+1%>_totalLoad">0</h3>
-                    <h5 class="comment" id="f<%=i+1%>_comment">Low</h5>
-                </div>
+          </div>
+          <div class="card">
+            <h5>Total Load</h5>
+            <h3 class="bigText totalLoad" id="f<%=i+1%>_totalLoad">0</h3>
+            <h5 class="comment" id="f<%=i+1%>_comment">Low</h5>
+          </div>
 
-                <div class="card">
-                    <h5>Recommended Selections</h5>
-                    <ul>
-                        <li>ENB</li>
-                        <li>ADA</li>
-                        <li>PGM</li>
-                    </ul>
-                    <h6>Total Load : 24</h6>
-                </div>
-            </div>
-
+          <div class="card">
+            <h5>Recommended Selections</h5>
+            <ul>
+              <li>ENB</li>
+              <li>ADA</li>
+              <li>PGM</li>
+            </ul>
+            <h6>Total Load : 24</h6>
+          </div>
         </div>
-        <% } %>
+      </div>
+      <% } %>
 
-        <input type="submit" value="save">
+      <input type="submit" value="Save" class="button"/>
     </form>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    <a class="logout" href="/logout"><i class="fa fa-sign-out"> Logout</i></a>
+    <a class="home" href="/admin/index"><i class="fa fa-home"> Admin Home</i></a>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
     <script src="/static/js/dashboard.js"></script>
-</body>
-
+  </body>
 </html>

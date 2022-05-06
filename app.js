@@ -26,6 +26,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
+  req.session.loggedIn = false;
   res.render("rootindex");
 });
 
@@ -37,12 +38,12 @@ app.get("/logout", async (req, res) => {
 app.use("/admin", adminRouter);
 app.use("/faculty", facultyRouter);
 app.get("/logout", async (req, res) => {
-    req.session.loggedIn = false;
-    res.redirect("/");
+  req.session.loggedIn = false;
+  res.redirect("/");
 });
 
-app.get("*", (req, res)=>{
-    res.render("error");
+app.get("*", (req, res) => {
+  res.render("error");
 });
 app.listen(3000, () => {
   console.log(`Course Allocation App listening at http://localhost:3000`);
