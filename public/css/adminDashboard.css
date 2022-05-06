@@ -4,8 +4,23 @@ body {
     background-image: url("/static/images/back1.webp");
 }
 
+span{
+    text-align:end;
+    color: black;
+    font-size: 1.3rem;
+    font-style: bold;
+}
+
 table{
     text-align: left;
+}
+label{
+    margin-bottom: 0rem;
+}
+
+td
+{
+    align-items: baseline;
 }
 
 .boldHR {
