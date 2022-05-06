@@ -303,6 +303,12 @@ let adminDashboardGet = (req, res) => {
 
 //---------------- End of admin Dashboard (get) ----------------//
 
+let manageCoursesPost = (req, res) => {
+};
+
+let manageCoursesGet = (req, res) => {
+  res.redirect('manageCourses');
+};
 
 
 module.exports = {
@@ -312,4 +318,6 @@ module.exports = {
   adminIndexPost,
   adminLoginGet,
   adminLoginPost,
+  manageCoursesGet,
+  manageCoursesPost,
 };
