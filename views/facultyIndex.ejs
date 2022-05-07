@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/css/facultyIndex.css" />
-    <title>Faculty Index</title>
-  </head>
-  <body>
-    <h1>Welcome <%=user%></h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/static/css/facultyIndex.css" />
+  <title>Faculty Index</title>
+</head>
+
+<body>
+  <h1>Welcome <%=user%></h1>
+  <input type="hidden" id="status" name="status" value="<%=status%>">
+  <h5 id="portal_msg">portal status</h5>
+  <div id="fill_prefs">
     <h3>Fill your Preferences here.</h3>
     <form action="/faculty/index" method="post">
       <!-- <input type="text" value="NAN" name="name"> -->
@@ -24,11 +29,14 @@
       </div>
       <br />
       <%}%>
-      <div class = "row">
-        <button type="submit" class="button col"><span>Submit</span></button>
-        <a class="button col" href="/faculty/dashboard"><span>Goto Dashboard</span></a>
-      </div>
+          <div class="row">
+            <button type="submit" class="button col"><span>Submit</span></button>
+            <a class="button col" href="/faculty/dashboard"><span>Goto Dashboard</span></a>
+          </div>
     </form>
-    <a class="logout" href="/logout"><span><i class="fa fa-sign-out">Logout</i></span></a>
-  </body>
+  </div>
+  <a class="logout" href="/logout"><span><i class="fa fa-sign-out">Logout</i></span></a>
+  <script src="/static/js/facultyIndex.js"></script>
+</body>
+
 </html>

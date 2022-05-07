@@ -134,3 +134,11 @@ h4.logout{
     right: 20px;
     color: #3d1d06dc;
 }
+
+.hidden-class{
+    visibility: hidden;
+}
+
+.visible-class{
+    visibility: visible;
+}

@@ -78,18 +78,23 @@ let adminLoginPost = (req, res) => {
 };
 //--------------------- End of admin Login  ---------------------//
 
+async function getPreviousConstants() {
+  let a, b, c, status;
+  let aq = `select * from constants`;
+  let ares = await client.query(aq);
+  let ob = ares['rows'][0];
+  a = ob['a'], b = ob['b'], c = ob['c'], status = ob['status'];
+  return [a, b, c, status];
+}
+
 //----------------- Start of admin Index (get) -----------------//
 
 let adminIndexGet = async (req, res) => {
   if (req.session.loggedIn && req.session.userType == "admin") {
     // do stuff.
-    let statusQ = `select * from constants`;
-    let statusres = await client.query(statusQ);
-    let a = statusres['rows'][0]['a'],
-      b = statusres['rows'][0]['b'],
-      c = statusres['rows'][0]['c'];
+    let previousConstants = await getPreviousConstants();
 
-    if (statusres['rows'][0]['status'] == 0) {
+    if (previousConstants[3] == 0) {
       // portal is off. course allocation off
 
     } else {
@@ -98,18 +103,16 @@ let adminIndexGet = async (req, res) => {
 
     res.render("adminIndex", {
       user: req.session.email,
-      a,
-      b,
-      c
+      a: previousConstants[0],
+      b: previousConstants[1],
+      c: previousConstants[2],
+      status: previousConstants[3],
     });
   } else {
     res.redirect('login');
   }
 };
 
-//------------------ End of admin Index (get) ------------------//
-
-//----------------- Start of admin Index (Post) ----------------//
 // Multer Upload Storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -123,17 +126,7 @@ const upload = multer({
   storage: storage,
 }).single("uploadfile");
 
-async function getPreviousConstants() {
-  let a, b, c, status;
-  let aq = `select * from constants`;
-  let ares = await client.query(aq);
-  let ob = ares['rows'][0];
-  a = ob['a'], b = ob['b'], c = ob['c'], status = ob['status'];
-  return [a, b, c, status];
-}
-
 let adminIndexPost = (req, res) => {
-
   if (req.session.loggedIn && req.session.userType == "admin") {
     upload(req, res, async function (err) {
       if (err) {
@@ -141,22 +134,36 @@ let adminIndexPost = (req, res) => {
         return;
       }
       let previousConstants = await getPreviousConstants();
+      let consts = 'abc';
 
-      let updateq = [`update constants set a = ${req.body['a']} where a = ${previousConstants[0]}`,
-        `update constants set b = ${req.body['b']} where b=${previousConstants[1]}`,
-        `update constants set c = ${req.body['c']} where c = ${previousConstants[2]}`
-      ];
-      
-      for(let i=0; i<3; i++)
-      {
-        let upres = await client.query(updateq[i]);
+      if (req.body['status'] != undefined) {
+        let castatus = parseInt(req.body['status']);
+        console.log(castatus);
+        let newcastatus = 1 - castatus;
+        let udatesq = `update constants set status = ${newcastatus} where status = ${castatus}`;
+        let upress = await client.query(udatesq);
+        await res.redirect('index');
+      } else {
+
+        for (let i = 0; i < 3; i++) {
+          if (req.body[consts[i]] != undefined) {
+            if (req.body[consts[i]] != previousConstants[i]) {
+              let updateq = `update constants set ${consts[i]} = ${req.body[consts[i]]} where ${consts[i]} = ${previousConstants[i]}`;
+              let upres = await client.query(updateq);
+            }
+          }
+        }
+
+        // Everything went fine'
+        if (req.file != undefined) {
+          console.log(__basedir + "/uploads/" + req.file.filename);
+          exportExcelData2MySQL(__basedir + "/uploads/" + req.file.filename);
+
+        }
+        await res.redirect('index');
       }
 
-        // Everything went fine
-        console.log(__basedir + "/uploads/" + req.file.filename);
-      exportExcelData2MySQL(__basedir + "/uploads/" + req.file.filename);
     });
-    res.redirect("index");
   } else {
     res.redirect('login');
   }
@@ -306,13 +313,14 @@ let adminDashboardPost = async (req, res) => {
 }
 
 //------------------ Start of admin Dashboard (get) ------------------//
-let adminDashboardGet = (req, res) => {
-  let a = 4,
-    b = 1,
-    c = 3;
+let adminDashboardGet = async (req, res) => {
+  let prevConsts = await getPreviousConstants();
+  let a = prevConsts[0],
+    b = prevConsts[1],
+    c = prevConsts[2];
   if (req.session.loggedIn && req.session.userType == "admin") {
-    client.query(query, async (err, result) => {
-      if (err) throw err;
+    let result = await client.query(query);
+    try {
       let fobj = result["rows"];
       let n = fobj.length;
 
@@ -325,18 +333,12 @@ let adminDashboardGet = (req, res) => {
         b,
         c,
       });
-    });
+    } catch (errorr) {
+      throw errorr;
+    }
   } else {
     res.redirect('login');
   }
-  // res.render("adminDashboard", {
-  //   user
-  // });
-
-  //     });
-  //   });
-  //   }
-  //   else res.redirect("/admin/login");
 };
 
 //---------------- End of admin Dashboard (get) ----------------//

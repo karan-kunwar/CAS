@@ -44,7 +44,11 @@ let facultyLoginPost = async (req, res) => {
   //   });
 };
 
-let facultyIndexGet = (req, res) => {
+let facultyIndexGet = async(req, res) => {
+  let statusq =  `select * from constants`;
+  let statusres = await client.query(statusq);
+  let status = statusres['rows'][0]['status'];
+
   if (req.session.loggedIn && req.session.userType == "faculty") {
     let query = `select sc.semcourseid as "SemCourseId", 
         c.coursename as "Course", c.lecture as "L", c.tutorial as "T", 
@@ -56,16 +60,21 @@ let facultyIndexGet = (req, res) => {
         where bs.sem % 2 = 1
         order by bs.sem asc;`;
 
-    client.query(query, (err, result) => {
-      if (err) throw err;
+    let result = await client.query(query);
+     try{
       let _courses = result["rows"];
-      res.render("facultyIndex", {
+      await res.render("facultyIndex", {
         user: req.session.name,
         courses: _courses,
+        status: status,
       });
-    });
+    }
+    catch(err)
+    {
+      throw err;
+    }
   } else {
-    res.redirect("login");
+    await res.redirect("login");
   }
 };
 

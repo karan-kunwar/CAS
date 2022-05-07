@@ -123,3 +123,19 @@ img{
     margin: 50px;
     padding: 20px;
 }
+
+.cardd{
+     background-color: rgb(244, 216, 180);
+     margin: 10px 50px;
+     padding: 20px;
+     text-align: center;
+     border-radius: 0.5rem;
+}
+
+.woodenHR{
+    border: 5px dashed rgb(40, 19, 1);
+    height: 0px;
+    margin: 0px;
+    margin-bottom: 30px;
+    padding: 0px;
+}
