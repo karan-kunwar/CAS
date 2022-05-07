@@ -80,10 +80,27 @@ let adminLoginPost = (req, res) => {
 
 //----------------- Start of admin Index (get) -----------------//
 
-let adminIndexGet = (req, res) => {
+let adminIndexGet = async (req, res) => {
   if (req.session.loggedIn && req.session.userType == "admin") {
+    // do stuff.
+    let statusQ = `select * from constants`;
+    let statusres = await client.query(statusQ);
+    let a = statusres['rows'][0]['a'],
+      b = statusres['rows'][0]['b'],
+      c = statusres['rows'][0]['c'];
+
+    if (statusres['rows'][0]['status'] == 0) {
+      // portal is off. course allocation off
+
+    } else {
+
+    }
+
     res.render("adminIndex", {
       user: req.session.email,
+      a,
+      b,
+      c
     });
   } else {
     res.redirect('login');
@@ -106,19 +123,40 @@ const upload = multer({
   storage: storage,
 }).single("uploadfile");
 
+async function getPreviousConstants() {
+  let a, b, c, status;
+  let aq = `select * from constants`;
+  let ares = await client.query(aq);
+  let ob = ares['rows'][0];
+  a = ob['a'], b = ob['b'], c = ob['c'], status = ob['status'];
+  return [a, b, c, status];
+}
+
 let adminIndexPost = (req, res) => {
+
   if (req.session.loggedIn && req.session.userType == "admin") {
-    upload(req, res, function (err) {
+    upload(req, res, async function (err) {
       if (err) {
-        // This is a good practice when you want to handle your errors differently
         console.log("\nwhy error\n", err);
         return;
       }
-      // Everything went fine
-      console.log(__basedir + "/uploads/" + req.file.filename);
+      let previousConstants = await getPreviousConstants();
+
+      let updateq = [`update constants set a = ${req.body['a']} where a = ${previousConstants[0]}`,
+        `update constants set b = ${req.body['b']} where b=${previousConstants[1]}`,
+        `update constants set c = ${req.body['c']} where c = ${previousConstants[2]}`
+      ];
+      
+      for(let i=0; i<3; i++)
+      {
+        let upres = await client.query(updateq[i]);
+      }
+
+        // Everything went fine
+        console.log(__basedir + "/uploads/" + req.file.filename);
       exportExcelData2MySQL(__basedir + "/uploads/" + req.file.filename);
     });
-    res.redirect("dashboard");
+    res.redirect("index");
   } else {
     res.redirect('login');
   }

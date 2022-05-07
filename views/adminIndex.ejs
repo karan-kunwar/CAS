@@ -23,40 +23,45 @@
   </button>
 
   <hr />
-  <div>
-    <div style="margin: auto; align-items: baseline">
-      <h4>Set Parameters to calculate Workload</h4>
-      <p>Workload is calculated as a*L + b*T + c*P.</p>
-      <p style="display: inline-block">a</p>
-      <textarea name="a" id="" cols="4" rows="1"></textarea>
-      <br />
-      <p style="display: inline-block">b</p>
-      <textarea name="b" id="" cols="4" rows="1"></textarea>
-      <br />
-      <p style="display: inline-block">c</p>
-      <textarea name="c" id="" cols="4" rows="1"></textarea>
-    </div>
-    <hr />
-    <!-- Upload excel file -->
-    <h2>Upload Excel file</h2>
-    <br />
+  <div id="session-container" class="container-index">
     <form action="/admin/index" enctype="multipart/form-data" method="post">
-      <input type="file" name="uploadfile"
+      <div style="margin: auto; align-items: baseline">
+        <h3>Set Parameters to calculate Workload</h3>
+        <p>Workload is calculated as a*L + b*T + c*P.</p>
+
+        <label for="a">a: </label>
+        <input type="number" name="a" id="a" value="<%=a%>">
+        <label for="b">b: </label>
+        <input type="number" name="b" id="b" value="<%=b%>">
+        <label for="c">c: </label>
+        <input type="number" name="c" id="c" value="<%=c%>">
+
+        <br>
+
+      </div>
+      <hr />
+      <!-- Upload excel file -->
+      <h3>Upload Excel file</h3>
+      <br />
+      <input type="file" name="uploadfile" class="btn"
         accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
-      <input type="submit" value="Upload Excel" />
+      <br>
+      <br>
+      <input type="submit" class="btn btn-dark" value="Save values and upload file">
     </form>
     <!-- End of Upload excel file -->
     <hr />
 
     <div class="row">
       <a href="/admin/manageCourses">Manage Courses</a>
-      <br>
-      <br>
-      <br>
-      <a href="/admin/dashboard">Course Allocation and Management</a>
     </div>
     <a class="logout" href="/logout"><i class="fa fa-sign-out"> Logout</i></a>
   </div>
+
+  <br>
+  <br>
+  <br>
+  <a href="/admin/dashboard">Course Allocation and Management</a>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">

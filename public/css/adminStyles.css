@@ -15,6 +15,12 @@ hr {
 .btn {
     margin: 10px;
 }
+
+.btn-dark{
+    background-color: rgb(54, 22, 4);
+    color: burlywood;
+}
+
 .row {
     display: flex; /* equal height of the children */
     max-width: 32%;
@@ -100,4 +106,20 @@ p{
 }
 img{
     max-width: 200px;
+}
+
+.hidden-class{
+    visibility: hidden;
+}
+
+.visible-class{
+    visibility: visible;
+}
+
+.container-index{
+    background-color: burlywood;
+    border: 3px solid rgb(66, 8, 4);
+    border-radius: 5rem;
+    margin: 50px;
+    padding: 20px;
 }
