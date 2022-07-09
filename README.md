@@ -1,7 +1,7 @@
 # CAS
 
 A portal to allocate courses to the faculty in an unversity enviornment.
--Gaanja Sangh (IIIT-A)
+
 
 # How to work with source code
 1. download this repository
